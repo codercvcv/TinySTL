@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "initializer_list": "cpp",
+        "vector": "cpp",
+        "xmemory": "cpp",
+        "xstring": "cpp",
+        "xlocale": "cpp",
+        "memory": "cpp",
+        "xiosbase": "cpp",
+        "xutility": "cpp"
+    }
+}
