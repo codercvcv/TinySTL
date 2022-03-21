@@ -6,31 +6,30 @@
 
 namespace TinySTL {
 
-template <typename InputIterator>
-inline typename iterator_traits<InputIterator>::difference_type _distance(
-    const InputIterator& first, const InputIterator& last,
-    input_iterator_tag&) {
-  typename iterator_traits<InputIterator>::difference_type n = 0;
-  while (first != last) {
-    ++n;
-    ++first;
+ template <typename InputIterator>
+ typename iterator_traits<InputIterator>::difference_type _distance(
+    InputIterator first, InputIterator last, input_iterator_tag) {
+  typename iterator_traits<InputIterator>::difference_type distnece = 0;
+  while (first++ != last) {
+    ++distnece;
   }
-  return n;
+  return distnece;
 }
 
-template <typename InputIterator>
-inline typename iterator_traits<InputIterator>::difference_type _distence(
-    const InputIterator& first, const InputIterator& last,
-    random_access_iterator_tag&) {
+ template <typename RandomAccessIterator>
+ typename iterator_traits<RandomAccessIterator>::difference_type
+_distence(RandomAccessIterator first, RandomAccessIterator last,
+          random_access_iterator_tag) {
   return last - first;
 }
 
-template <typename InputIterator>
-inline typename iterator_traits<InputIterator>::difference_type distance(
-    const InputIterator& first, const InputIterator& last) {
-  typedef typename iterator_traits<InputIterator>::iterator_category category;
+ template <typename Iterator>
+ typename iterator_traits<Iterator>::difference_type distance(Iterator first,
+                                                             Iterator last) {
+  typedef typename iterator_traits<Iterator>::iterator_category category;
   return _distance(first, last, category());
 }
+
 }  // namespace TinySTL
 
 #endif  // __ALGORITHM_H__

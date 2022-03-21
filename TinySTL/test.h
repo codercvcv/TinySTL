@@ -4,9 +4,9 @@
 
 #include <iostream>
 
+#include "algorithm.h"
 #include "allocator.h"
 #include "iterator.h"
-#include "algorithm.h"
 
 namespace TinySTL {
 const size_t MAX_OBJS = 0x0001 << 4;
@@ -25,7 +25,7 @@ void test_iterator01() {
     arr_pint[i] = TinySTL::allocator<int>::allocate();
   }
 
-  std::cout << distance(arr_pint[0], arr_pint[5]) << std::endl;
+  std::cout << "distance: " << distance(arr_pint[0], arr_pint[5]) << std::endl;
 }
 }  // namespace Test
 

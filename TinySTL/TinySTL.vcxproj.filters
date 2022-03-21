@@ -41,5 +41,8 @@
     <ClInclude Include="iterator.h">
       <Filter>Header File</Filter>
     </ClInclude>
+    <ClInclude Include="algorithm.h">
+      <Filter>Header File</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
