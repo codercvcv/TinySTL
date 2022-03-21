@@ -3,6 +3,7 @@
 
 # temporary
 .vs
+.vscode
 
 # User-specific files
 *.suo
