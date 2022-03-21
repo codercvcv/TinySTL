@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __ALLOC__
-#define __ALLOC__
+#ifndef __ALLOC_H__
+#define __ALLOC_H__
 
 #include <cstdlib>
 
@@ -16,16 +16,18 @@ class alloc {
     struct obj* next_;
   };
 
-  static size_t FREELIST_INDEX(size_t size) {
-    return (size + ALIGN - 1) / ALIGN - 1;
+  // get the index of free_list as allocate size bytes
+  static size_t FREELIST_INDEX(size_t byte) {
+    return (byte + ALIGN - 1) / ALIGN - 1;
   }
 
-  static size_t ROUND_UP(size_t size) {
-    return (size + ALIGN - 1) & ~(ALIGN - 1);
+  // riase bytes to multiple of 8
+  static size_t ROUND_UP(size_t byte) {
+    return (byte + ALIGN - 1) & ~(ALIGN - 1);
   }
 
   static char* chunk_alloc(size_t size, size_t& nobjs);
-  static void* refill(size_t size);
+  static void* refill(size_t n);
 
   static obj* free_list_[NFREELIST];
   static size_t heap_size;
@@ -38,4 +40,4 @@ class alloc {
 };
 }  // namespace TinySTL
 
-#endif  // __ALLOC__
+#endif  // __ALLOC_H__

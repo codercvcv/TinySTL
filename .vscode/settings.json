@@ -8,6 +8,12 @@
         "xlocale": "cpp",
         "memory": "cpp",
         "xiosbase": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "iosfwd": "cpp",
+        "tuple": "cpp",
+        "xlocnum": "cpp",
+        "cstdlib": "cpp",
+        "cstddef": "cpp",
+        "type_traits": "cpp"
     }
 }

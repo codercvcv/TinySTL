@@ -1,9 +1,9 @@
 #include "alloc.h"
 
 namespace TinySTL {
-size_t alloc::heap_size = 0;
 char* alloc::start_free_ = nullptr;
 char* alloc::end_free_ = nullptr;
+size_t alloc::heap_size = 0;
 alloc::obj* alloc::free_list_[NFREELIST] = {0, 0, 0, 0, 0, 0, 0, 0,
                                             0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -74,6 +74,34 @@ char* alloc::chunk_alloc(size_t size, size_t& nobjs) {
     end_free_ = start_free_ + bytes_to_get;
     return chunk_alloc(size, nobjs);
   }
+}
+
+void* alloc::refill(size_t size) {
+  size_t nobjs = NOBJS;
+  char* chunk = chunk_alloc(size, nobjs);
+
+  if (1 == nobjs) {
+    return chunk;
+  }
+
+  size_t index = FREELIST_INDEX(size);
+  free_list_[index] = reinterpret_cast<obj*>(chunk + size);
+  obj* result = reinterpret_cast<obj*>(chunk);
+  obj* next_obj = free_list_[index];
+  obj* current_obj = nullptr;
+
+  for (size_t i = 1;; ++i) {
+    current_obj = next_obj;
+    next_obj = reinterpret_cast<obj*>(reinterpret_cast<char*>(next_obj) + size);
+    if (i == nobjs - 1) {
+      current_obj->next_ = nullptr;
+      break;
+    } else {
+      current_obj->next_ = next_obj;
+    }
+  }
+
+  return result;
 }
 
 }  // namespace TinySTL

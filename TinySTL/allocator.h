@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __ALLOCATOR__
-#define __ALLOCATOR__
+#ifndef __ALLOCATOR_H__
+#define __ALLOCATOR_H__
 
 #include <cstddef>
 
@@ -38,9 +38,9 @@ class allocator {
     new (p) value_type(value);
   }
 
-  static destroy(pointer p) { p->~value_type(); }
+  static void destroy(pointer p) { p->~value_type(); }
 
-  static destroy(pointer first, pointer last) {
+  static void destroy(pointer first, pointer last) {
     while (first != last) {
       (first++)->~value_type();
     }
@@ -48,4 +48,4 @@ class allocator {
 };
 }  // namespace TinySTL
 
-#endif  // __ALLOCATOR__
+#endif  // __ALLOCATOR_H__
