@@ -44,5 +44,8 @@
     <ClInclude Include="algorithm.h">
       <Filter>Header File</Filter>
     </ClInclude>
+    <ClInclude Include="type_traits.h">
+      <Filter>Header File</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

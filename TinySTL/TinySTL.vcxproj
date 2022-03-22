@@ -148,6 +148,7 @@
     <ClInclude Include="allocator.h" />
     <ClInclude Include="iterator.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="type_traits.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

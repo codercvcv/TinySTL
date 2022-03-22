@@ -7,6 +7,7 @@
 #include "algorithm.h"
 #include "allocator.h"
 #include "iterator.h"
+#include "type_traits.h"
 
 namespace TinySTL {
 const size_t MAX_OBJS = 0x0001 << 4;
@@ -26,6 +27,14 @@ void test_iterator01() {
   }
 
   std::cout << "distance: " << distance(arr_pint[0], arr_pint[5]) << std::endl;
+}
+
+void _type_traits(true_type) { std::cout << "is void type" << std::endl; }
+void _type_traits(false_type) { std::cout << "is not void type" << std::endl; }
+
+void test_type_traits() {
+  _type_traits(is_void<void>());
+  _type_traits(is_void<int>());
 }
 }  // namespace Test
 
