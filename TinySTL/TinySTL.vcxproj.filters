@@ -27,6 +27,9 @@
     <ClCompile Include="alloc.cpp">
       <Filter>implementation</Filter>
     </ClCompile>
+    <ClCompile Include="list.cpp">
+      <Filter>implementation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alloc.h">
@@ -45,6 +48,9 @@
       <Filter>Header File</Filter>
     </ClInclude>
     <ClInclude Include="type_traits.h">
+      <Filter>Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
       <Filter>Header File</Filter>
     </ClInclude>
   </ItemGroup>
